@@ -7,12 +7,16 @@
 * `v`: visual mode
 * `V`: visual line mode
 
-###
+### Delete stuff
 
 * `x`, `X`: delete character under, before cursor.
-* `dd`: delete line
+* `d`: delete something
+* `y`: copy something
 
-* `u`, Ctrl+R: undo, redo last command
+### Move around
 * `b`, `w`, `e`
 * `0`, `$`
-* and about a gazillion more…
+
+### Misc
+
+* `u`, Ctrl+R: undo, redo last command
