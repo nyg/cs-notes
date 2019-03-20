@@ -16,7 +16,7 @@ Links:
 
 ## Partition layout
 
-Example for a single partition layout.
+### One partition layout
 
 1. Use (C)ustom layout
 2. Delete all partitions with `d *`
@@ -24,3 +24,12 @@ Example for a single partition layout.
 4. Create main partition with `a` with mount point `/`
 
 Info: partion b is swap, partition c is whole disk
+
+### Bigger /usr for ports
+
+1. To use whole disk: W for MBR, G for GPT
+2. (E)dit auto layout
+3. p g prints all partitions
+4. R f resize auto allocated partition (f = /usr)
+5. Input new size, e.g. 25g
+6. q save & quit
