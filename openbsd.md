@@ -49,3 +49,15 @@ Info: partion b is swap, partition c is whole disk
         forward to 0:0:0:0:0:ffff:c0a8:65 port 8080 inet
     }
     ```
+
+## Cron jobs
+
+* Edit cron jobs with `crontab -e`
+* List them with `crontab -l`.
+
+    ```
+    SHELL=/bin/sh
+    PATH=/bin:/usr/bin:/usr/local/bin
+    HOME=/var/log
+    */5 * * * * /home/user/script.sh
+    ```
