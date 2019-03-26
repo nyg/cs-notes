@@ -80,3 +80,10 @@ Info: partion b is swap, partition c is whole disk
     net.inet6.ip6.forwarding=0
     net.inet6.ip6.accept_rtadv=1
     ```
+
+## Mounting a USB drive
+
+1. `sysctl hw.disknames`
+2. `disklabel xxx`
+3. `mkdir /mnt/folder`
+4. `mount -t fs /dev/xxx /mnt/folder`
