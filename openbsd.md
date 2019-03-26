@@ -1,5 +1,8 @@
 # OpenBSD
 
+* [Awesome BSD](https://github.com/DiscoverBSD/awesome-bsd)
+* [Awesome OpenBSD](https://github.com/ligurio/awesome-openbsd)
+
 ## Creating a bootable USB from macOS
 
 1. Download `installXX.fs` (includes file sets, unlike `minirootXX.fs`)
@@ -9,7 +12,7 @@
 5. Write installer to key: `sudo dd if=installXX.fs of=/dev/rdiskX bs=1m`
 6. macOS will say the key can’t be read but that’s okay.
 
-Links:
+
 * https://superuser.com/questions/631592/why-is-dev-rdisk-about-20-times-faster-than-dev-disk-in-mac-os-x
 * http://osxdaily.com/2015/06/05/copy-iso-to-usb-drive-mac-os-x-command
 * https://www.openbsd.org/faq/faq4.html
