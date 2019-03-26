@@ -71,3 +71,12 @@ Info: partion b is swap, partition c is whole disk
     inet6 autoconf
     inet6 alias <ipv6>
     ```
+
+## /etc/sysctl.conf
+
+* Config for IPv6?
+
+    ```
+    net.inet6.ip6.forwarding=0
+    net.inet6.ip6.accept_rtadv=1
+    ```
