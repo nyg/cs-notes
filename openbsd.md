@@ -87,3 +87,11 @@ Info: partion b is swap, partition c is whole disk
 2. `disklabel xxx`
 3. `mkdir /mnt/folder`
 4. `mount -t fs /dev/xxx /mnt/folder`
+
+## Misc
+
+* `pkg_info -m` list of manually installed packages
+* Set `pkg_path`?
+* `/etc/installurl` must not be empty:
+    * http://mirror.switch.ch/ftp/pub/OpenBSD
+	* http://ftp.cc.uoc.gr/mirrors/OpenBSD
