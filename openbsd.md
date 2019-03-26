@@ -61,3 +61,13 @@ Info: partion b is swap, partition c is whole disk
     HOME=/var/log
     */5 * * * * /home/user/script.sh
     ```
+
+## /etc/hostname.if
+
+* Config for DHCP and IPv6
+
+    ```
+    dhcp
+    inet6 autoconf
+    inet6 alias <ipv6>
+    ```
