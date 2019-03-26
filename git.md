@@ -25,5 +25,7 @@
 
 ## Misc
 
+* Show changes in latest commit: `git show`
 * `git log --oneline --graph --all`
-* Choose which part of a file to stage `git add -p`
+* Choose which part of a file to stage: `git add -p`
+    * Manually split hunk with `e`: https://stackoverflow.com/a/37769129/5536516
