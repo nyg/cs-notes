@@ -33,3 +33,19 @@ Info: partion b is swap, partition c is whole disk
 4. R f resize auto allocated partition (f = /usr)
 5. Input new size, e.g. 25g
 6. q save & quit
+
+## Relayd
+
+* Daemon is `relayd`, control is `relayctl`
+* Conf is at `/etc/relayd.conf`.
+* Interesting command is `relayctl show summary`.
+* `/etc/rc.conf.local` must be modified to start relayd at startup.
+* `anchor "relayd/*”` must be added in  `/etc/pf.conf`.
+* The forward IPv6 address is the local IPv4 address converted to IPv6 address:
+
+    ```
+    relay tcp6to4 {
+        listen on <ipv6 address> port 80
+        forward to 0:0:0:0:0:ffff:c0a8:65 port 8080 inet
+    }
+    ```
