@@ -20,3 +20,5 @@
 ### Misc
 
 * `u`, Ctrl+R: undo, redo last command
+* `:!<command>`, execute a command in shell
+* `:r !<command>`, execute a command and insert its output in Vim
