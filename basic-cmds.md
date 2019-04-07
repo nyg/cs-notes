@@ -1,6 +1,20 @@
 ## Basic commands
 
-* Sort numerically (n) using the 3rd column (k), using : as sep (t)
-    * `sort -nk3 -t`
+### `sort`, `uniq`, `cut`
+
+```sh
+# Sort the first column of <file> in numerical reverse order (-k1gr) and then
+# the third column alphabetically, using ':' as field separator.
+cat <file> | sort -t':' -k1gr -k2d
+```
+
+### `grep`, `sed`, `awk`
+
+### Archives
+
 * `zip -r <zip file> <file>...`
+
+### Misc
+
 * `scp -P <port> <source> <target>`, e.g. `user@host:path`
+* `mktemp [-d] /tmp/file_XXXX`, create files or directory with unique names
