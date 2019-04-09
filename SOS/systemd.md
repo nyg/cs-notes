@@ -16,7 +16,7 @@ ExecStop=/usr/bin/docker container kill sos-httpd
 WantedBy=multi-user.target
 ```
 
-## Misc
+## Misc
 
 ```sh
 # start or stop service
