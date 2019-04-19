@@ -61,7 +61,7 @@
 
 #### Rapport
 
-* **Verbale** : si une vulnérabilité critique est détectée, elle l'est annoncée tout de suite.
+* **Verbal** : si une vulnérabilité critique est détectée, elle l'est annoncée tout de suite.
 * **Écrit** : résumé, portée du projet, liste d'outils, d'exploits, dates des tests, résultats des tests effectués, vulnérabilités trouvées, recommandations et actions.
 
 À la fin, effacer les traces du pentest…
@@ -84,7 +84,7 @@ Collection de paramètres de configuration TCP/IP qui permettent de conjecturer 
 ### Port scanning
 
 * **port ouvert** : l'application accepte activement les packets TCP/UDP.
-* **port fermé** : aucune application n'écoute le port en question, mais l'OS répond qu'aucune connexion n'est acceptée.
+* **port fermé** : aucune application n'écoute le port en question, mais l'OS répond qu'aucune connexion n'est acceptée (e.g TCP RST, ICMP unreachable).
 * **port filtré** : état inconnu, le système ne retourne aucune information.
 
 Port ouvert → service → application → vulnérabilité → exploit
@@ -94,7 +94,7 @@ Port ouvert → service → application → vulnérabilité → exploit
 * **SYN** : Échange SYN ; SYN/ACK ; RST. Le 3-way handshake n'aboutit pas, la connexion n'est pas établie, mais si SYN/ACK est reçu alors le port est ouvert.
 * **FIN, NULL & XMAS** : Envoi d'un packet TCP avec le flag FIN à 1 (FIN), aucun flag à 1 (NULL), les flags FIN, PSH et URG à 1 (XMAS). Si on reçoit un RST le port est fermé, sinon il est ouvert ou filtré.
 * **UDP** : envoi d'un datagram UDP, s'il n'y a pas de réponse le port est ouvert ou filtré, si l'OS renvoie un *ICMP port unreachable* le port est fermé.
-	
+
 ## Attaques actives
 
 * Man-in-the-middle
@@ -109,3 +109,4 @@ Port ouvert → service → application → vulnérabilité → exploit
 * Utilisation de **botnet** (machines sous le contrôle des attaquants), de réseaux de machines compromises (à louer). De l'ordre de quelques centaines de milliers de machines.
 * **Smurf** : attaque DDoS en utilisant un ping ICMP avec comme adresse IP source celle de la cible. Les réponses ICMP inondent la cible.
 * **SYN flood** : établissement de connexions TCP (3-way handshake) forcant le serveur à allouer beaucoup de ressources.
+* **MAC table overflow**
