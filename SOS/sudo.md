@@ -34,4 +34,7 @@ sudo
 -g specify group with which to run sudo
 -u specify user to impersonate
 -e edit a file instead of running a command, same as sudoedit
+
+# omits #include directive
+$ sudo cat /etc/sudoers | grep -E '^[^\s#]'
 ```
