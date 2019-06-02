@@ -62,7 +62,7 @@ Character streams are often "wrappers" for byte streams. The character stream us
 
 There are two general-purpose byte-to-character "bridge" streams: `InputStreamReader` and `OutputStreamWriter`. Use them to create character streams when there are no prepackaged character stream classes that meet your needs.
 
-**Use**: an `OutputStreamWriter` wrapped in a `BufferedWriter`. Some for a input stream. Avoid `FileReader` and `FileWriter` because you cannot specify the chartset.
+**Use**: an `OutputStreamWriter` wrapped in a `BufferedWriter`. Same for a input stream. Avoid `FileReader` and `FileWriter` because you cannot specify the chartset.
 
 ## Buffered streams
 
