@@ -10,9 +10,12 @@ cat <file> | sort -t':' -k1gr -k2d
 
 ### `grep`, `sed`, `awk`
 
+* In-place file modification: `sed -i -E 's/^(SELINUX=).*$/\1disabled/' /etc/sysconfig/selinux`
+
 ### Archives
 
 * `zip -r <zip file> <file>...`
+* `tar -xzf bar.tar.gz -C <dest>`
 
 ### Misc
 
