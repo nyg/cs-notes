@@ -152,7 +152,7 @@ Les droits UNIX définissent quels appels système peuvent accéder à quels fic
 * permet de limiter, policer et comptabiliser les ressources d'un ensemble de processus
 * similaire à nice/renice, limits.conf mais plus flexible
 * sont organisés hiérarchiquement, avec héritage
-* plusieurs hiérarchie possible
+* plusieurs hiérarchies possibles
 * filesys cgroup?, cgmanager, cgcreate, cgexec, cgclassify
 * utilisé par d'autres systèmes tels que LXC, systemd
 * un sous-système (ou resource controller) agit sur un groupe de tâches, e.g. un groupe de processus
