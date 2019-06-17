@@ -6,7 +6,7 @@ LSASS permet d'authentifier les utilisateurs et émet les Access Token après un
 
 L'Access Token est délivré à l'utilisateur qui s'est authentifié. Il a une portée local, il est utilisé par Windows pour effectuer des descisions relative au contrôle d'accès, il est transmis aux processus et threads enfants. Il contient le SID de l'utilisateur, son groupe, ses droits et ses privilèges.
 
-![winlogon](winlogon.png)
+![winlogon](https://github.com/nyg/cs-notes/raw/master/SOS/windows/winlogon.png)
 
 # 4 et 6
 
@@ -25,7 +25,7 @@ EternalBlue est une vulnérabilité critique du protocole SMB v1.0 permettant l'
 
 Le Security Reference Monitor (SRM) vérifie les autorisations suite aux requêtes de l'Object Manager (?). Le SRM ne vérifie que les droits d'accès. Il compare l'Access Token à l'Access Control List (Security Descriptor) (?) et à l'Integrity Level (?).
 
-![srm](srm.png)
+![srm](https://github.com/nyg/cs-notes/raw/master/SOS/windows/srm.png)
 
 # 6
 
@@ -50,7 +50,7 @@ LAN Manager Hash (LM Hash) est un algorithme de hashage de mots de passe très f
 
 Remplacé par le NT LAN Manager Hash (NTLM Hash) qui est aussi très faible. Est aussi vulnérable à l'attaque Pass-the-hash rendant inutile le bruteforçage du hash. La connaissance du hash NTLM est suffisante pour produire la réponse challenge demandée par le serveur. Ne peut pas être desactivé pour des raisons de compatibilité.
 
-![pass-the-hash](pass-the-hash.png)
+![pass-the-hash](https://github.com/nyg/cs-notes/raw/master/SOS/windows/pass-the-hash.png)
 
 # 1
 
@@ -82,7 +82,7 @@ Différents niveau des Integrity Levels existants : Untrusted, Low, Medium, High
 
 Intégré comme module dans Metasploit et permet de déployer un shell Meterpreter en utilisant reverse_tcp ou bind_tcp comme payload.
 
-![psexec](psexec.png)
+![psexec](https://github.com/nyg/cs-notes/raw/master/SOS/windows/psexec.png)
 
 Dans Metasploit, un payload correspond à un exploit module. Les 3 types principaux sont :
 
@@ -90,4 +90,4 @@ Dans Metasploit, un payload correspond à un exploit module. Les 3 types princip
 * Stager : payload qui initie une connexion entre l'attaquant et la victime dans le but de télécharger un stage, de l'injecter en mémoire et de le faire exécuter. De petite taille et fiable.
 * Stage : payload téléchargé par un stager. Permet d'avoir des fonctionnalités avancées sans limite de taille, e.g. Meterpreter.
 
-![staging](staging.png)
+![staging](https://github.com/nyg/cs-notes/raw/master/SOS/windows/staging.png)
