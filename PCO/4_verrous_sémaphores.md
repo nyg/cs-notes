@@ -1,4 +1,4 @@
-# Verrous et Sémaphores
+# 4 – Verrous et Sémaphores
 
 ## Verrous
 

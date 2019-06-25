@@ -1,4 +1,4 @@
-# Lecteurs–rédacteurs
+# 7 – Lecteurs–rédacteurs
 
 * Utilisé lorsque plusieurs threads doivent accéder à une ressource.
 * Les lecteurs ne peuvent que lire et les rédacteurs qu'écrire.

@@ -1,4 +1,4 @@
-# Exclusion mutuelle par attente active
+# 1 – Attente active
 
 * Une **ressource critique** est une ressource qui ne doit être accédée par une seule tâche à l'instant t.
 * La portion de code accédant à une ressource critique est appelée **section critique**.

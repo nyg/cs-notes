@@ -1,4 +1,4 @@
-# Threads
+# 3 – Threads
 
 * **Green thread** : thread ordonnancé par une machine virtuelle ou une librairie qui émule l'ordonnanceur de l'OS.
 * **Native thread** : thread natif géré par l'ordonnanceur de l'OS.
