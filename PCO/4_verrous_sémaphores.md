@@ -3,9 +3,8 @@
 ## Verrous
 
 * Les **verrous** permettent de se passer de l'attente active qui a le désavantage de monopoliser le processeur. Un verrou est une variable booléenne qui possède une liste d'attente ainsi que deux opérations atomiques : vérouiller et déverrouiller. **Mutex** en anglais.
-* Le thread verrouillant le verrou est son **propriétaire** jusqu'à ce qu'il le déverrouille.
+* Le thread verrouillant le verrou est son **propriétaire** jusqu'à ce qu'il le déverrouille (et seul le propriétaire peut le déverrouiller).
 * À sa création, un verrou est déverrouillé.
-*
 
 ```cpp
 void verrouiller(verrou v) {
@@ -39,7 +38,7 @@ QMutex::tryLock(int timeout = 0)
 * Les **sémaphores** sont une généralisation des verrous. Ils comprennent une variable entière au lieu d'un booléen. Les deux opérations atomiques sont P pour l'acquérir et V pour le relacher.
 * Un verrou est un sémaphore initialisé à 1.
 * Lorsque plusieurs tâches peuvent accéder en même temps à une section critique on parle alors de **section contrôlée**.
-* Les sémaphores servent à coordonner ou synchroniser des tâches. Un exemple consiste à initialiser un sémaphore à 0, ainsi, le premier appel à P sera bloquant.
+* Les sémaphores servent à coordonner ou synchroniser des tâches (i.e. faire en sorte qu'une tâche ne s'exécute que lorsqu'une ou plusieurs autres ont terminé). Un exemple consiste à initialiser un sémaphore à 0, ainsi, le premier appel à P sera bloquant.
 
 ```cpp
 void P(sémaphore s) {
