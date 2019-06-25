@@ -1,7 +1,8 @@
 # Résumé théorie
 
-## Types de threads
+## Threads
 
+* Les threads se partagent l'espace d'adressage du processus. Ils possèdent leur propre pile et contexte d'exécution (PC + registre). Cycle de vie similaire à celui d'un processus.
 * Un **green thread** est un thread ordonnancé par une machine virtuelle ou une librairie qui émule l'ordonnanceur de l'OS.
 * Un **thread natif** est géré par l'ordonnanceur de l'OS.
 
