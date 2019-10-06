@@ -91,9 +91,8 @@ void unlockWriting() {
 ## Priorité aux rédacteurs
 
 * `mutexReaders` : permet de favoriser les rédacteurs en empêchant plusieurs lecteurs de s'ajouter à `reader`.
+* `mutexWriters` : qui permet de bloquer les rédacteurs pendant que des écritures ou des lectures sont en cours.
 * `mutex` : qui est en charge de protéger l’accès à la variable `nbReaders`.
-* `mutexWriters` : qui permet de bloquer les rédacteurs
-pendant que des écritures ou des lectures sont en cours.
 * `writer` : qui permet au premier lecteur qui accède la ressource de bloquer les potentiels rédacteurs.
 * `reader` : qui permet au premier rédacteur arrivé de bloquer les potentiels futurs lecteurs.
 
