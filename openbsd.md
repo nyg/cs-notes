@@ -3,6 +3,45 @@
 * [Awesome BSD](https://github.com/DiscoverBSD/awesome-bsd)
 * [Awesome OpenBSD](https://github.com/ligurio/awesome-openbsd)
 
+## Install
+
+* [Installation guide](https://www.openbsd.org/faq/faq4.html)
+* [Filesets](https://www.openbsd.org/faq/faq4.html#FilesNeeded)
+* [Installation images](https://www.openbsd.org/faq/faq4.html#Download)
+
+### Steps
+
+* Choose (I)nstall
+* Keyboard layout: en (or sf)
+* System hostname
+* Network interfaces to be configured
+    * [em](https://man.openbsd.org/em)
+    * [wpi](https://man.openbsd.org/wpi)
+        * Need the firmware to be ready (could not read firmware wpi-3945abg)
+        * https://superuser.com/a/832026/578935
+    * [vlan](https://man.openbsd.org/vlan)
+* DNS domain name: my.domain
+* DNS nameservers: none
+* Password for root account
+* Start sshd by default: yes
+* Start X Window System by xenodm: no
+* Setup a user: yes
+* Allow root ssh login: no
+* Which disk is the root disk?
+    * [wd](https://man.openbsd.org/wd)
+    * [sd](https://man.openbsd.org/sd)
+    * Disk setup: MBR, GPT, OpenBSD area, Edit
+* Disk layout
+* Location of sets: disk, is mounted: no
+* Timezone: Europe/Paris
+
+## Firmware
+
+* Check for missing firmware with `fw_update -vi`.
+    * https://man.openbsd.org/fw_update
+* Install or update firmware for all drivers with `fw_update -a` (Internet connection required).
+* Or download non-free firmware [here](https://firmware.openbsd.org/firmware/) and install them with `fw_update -p <dir>`, the `.tgz` firmware must be in the directory specified, no need to extract.
+
 ## Creating a bootable USB from macOS
 
 1. Download `installXX.fs` (includes file sets, unlike `minirootXX.fs`)
@@ -11,7 +50,6 @@
 4. Unmount key: `diskutil unmountDisk /dev/diskX`
 5. Write installer to key: `sudo dd if=installXX.fs of=/dev/rdiskX bs=1m`
 6. macOS will say the key can’t be read but that’s okay.
-
 
 * https://superuser.com/questions/631592/why-is-dev-rdisk-about-20-times-faster-than-dev-disk-in-mac-os-x
 * http://osxdaily.com/2015/06/05/copy-iso-to-usb-drive-mac-os-x-command
@@ -55,7 +93,7 @@ Info: partion b is swap, partition c is whole disk
 
 ## Cron jobs
 
-* Edit cron jobs with `crontab -e`
+* Edit cron jobs with `crontab -e`.
 * List them with `crontab -l`.
 
     ```
@@ -67,13 +105,13 @@ Info: partion b is swap, partition c is whole disk
 
 ## /etc/hostname.if
 
-* Config for DHCP and IPv6
+Config for DHCP and IPv6
 
-    ```
-    dhcp
-    inet6 autoconf
-    inet6 alias <ipv6>
-    ```
+```
+dhcp
+inet6 autoconf
+inet6 alias <ipv6>
+```
 
 ## /etc/sysctl.conf
 
@@ -86,10 +124,40 @@ Info: partion b is swap, partition c is whole disk
 
 ## Mounting a USB drive
 
-1. `sysctl hw.disknames`
-2. `disklabel xxx`
-3. `mkdir /mnt/folder`
-4. `mount -t fs /dev/xxx /mnt/folder`
+Get the list of disks:
+
+```sh
+$ sysctl hw.disknames
+hw.disknames=wd0:,cd0:,sd0:
+```
+
+Find out which partition to mount:
+
+```sh
+$ disklabel sd0
+# /dev/rsd0c
+type: SCSI
+…
+
+16 partitions:
+# …
+  i:    <size>    <offset>    <fstype>
+```
+
+Create the mount folder:
+
+```sh
+$ mkdir /mnt/folder
+```
+
+Mount the drive:
+
+```sh
+$ mount -t <fstype> /dev/sd0i /mnt/folder
+```
+
+* https://man.openbsd.org/sysctl.8
+* https://man.openbsd.org/disklabel.8
 
 ## Misc
 
