@@ -75,6 +75,58 @@ Info: partion b is swap, partition c is whole disk
 5. Input new size, e.g. 25g
 6. q save & quit
 
+## OpenSSH
+
+**Goal**: we want to disable root login and allow only public key authentication for other users.
+
+### During install
+
+1. Enable sshd during boot (this is actually the default).
+2. Disable root login (this will set `PermitRootLogin` to `no` in `/etc/ssh/sshd_config`).
+
+### After install
+
+Before disabling password authentication we need to add a public key in a user's `~/.ssh/authorized_keys`. For that, we do the following on the machine that will connect to the OpenBSD machine:
+
+```sh
+# We generate a public and private key (e.g. in ~/.ssh).
+ssh-keygen -t ed25519 -C "this is a comment"
+
+# We copy the public key into the OpenBSD machine. This requires openbsd_user's password.
+ssh-copy-id -i ~/.ssh/key.pub openbsd_user@openbsd_host
+
+# ~/.ssh/config might need to be modified, so the correct public key is chosen when connected connecting to the OpenBSD machine.
+vim ~/.ssh/config
+
+# We finally test the connection (we should not be asked for openbsd_user's password). If the password is asked, something is probably wrong in ~/.ssh/config.
+ssh openbsd_user@openbsd_host
+
+# When connecting for the first time we will be asked if the fingerprint of the host's public key is correct. We find this fingerprint from the OpenBSD machine using:
+ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub
+```
+
+Back to the OpenBSD machine, we can now allow only public key authentication by adding the following line in `/etc/ssh/sshd_config`:
+
+```
+AuthenticationMethods publickey
+```
+
+Let's reload the sshd configuration:
+
+```sh
+/etc/rc.d/sshd reload
+```
+
+### Documentation
+
+* Key types: https://security.stackexchange.com/a/50890/
+* OpenSSH daemon
+  * https://man.openbsd.org/sshd
+  * https://man.openbsd.org/sshd_config (`/etc/ssh/sshd_config`)
+* OpenSSH client
+  * https://man.openbsd.org/ssh
+  * https://man.openbsd.org/ssh_config (`/etc/ssh/ssh_config`)
+
 ## Relayd
 
 * Daemon is `relayd`, control is `relayctl`
@@ -105,13 +157,13 @@ Info: partion b is swap, partition c is whole disk
 
 ## /etc/hostname.if
 
-Config for DHCP and IPv6
+* Config for DHCP and IPv6
 
-```
-dhcp
-inet6 autoconf
-inet6 alias <ipv6>
-```
+    ```
+    dhcp
+    inet6 autoconf
+    inet6 alias <ipv6>
+    ```
 
 ## /etc/sysctl.conf
 
