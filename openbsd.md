@@ -81,7 +81,7 @@ Info: partion b is swap, partition c is whole disk
 
 ### During install
 
-1. Enable sshd during boot (this is actually the default).
+1. Enable `sshd` during boot (this is actually the default).
 2. Disable root login (this will set `PermitRootLogin` to `no` in `/etc/ssh/sshd_config`).
 
 ### After install
@@ -92,16 +92,22 @@ Before disabling password authentication we need to add a public key in a user's
 # We generate a public and private key (e.g. in ~/.ssh).
 ssh-keygen -t ed25519 -C "this is a comment"
 
-# We copy the public key into the OpenBSD machine. This requires openbsd_user's password.
+# We copy the public key into the OpenBSD machine. This requires openbsd_user's
+# password.
 ssh-copy-id -i ~/.ssh/key.pub openbsd_user@openbsd_host
 
-# ~/.ssh/config might need to be modified, so the correct public key is chosen when connected connecting to the OpenBSD machine.
+# ~/.ssh/config might need to be modified, so the correct public key is chosen
+# when connected connecting to the OpenBSD machine.
 vim ~/.ssh/config
 
-# We finally test the connection (we should not be asked for openbsd_user's password). If the password is asked, something is probably wrong in ~/.ssh/config.
+# We finally test the connection (we should not be asked for openbsd_user's
+# password). If the password is asked, something is probably wrong in
+# ~/.ssh/config.
 ssh openbsd_user@openbsd_host
 
-# When connecting for the first time we will be asked if the fingerprint of the host's public key is correct. We find this fingerprint from the OpenBSD machine using:
+# When connecting for the first time we will be asked if the fingerprint of the
+# host's public key is correct. We find this fingerprint from the OpenBSD
+# machine using:
 ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub
 ```
 
