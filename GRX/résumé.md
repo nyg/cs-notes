@@ -99,7 +99,7 @@
         1. `Facility` (source) : 24 codes possibles peuvent être associés aux processus émetteur de l'événement, e.g. kern, user, mail, daemon, auth, ...
         2. `Criticity` (gravité) : 8 niveaux possibles, i.e. emerg, alert, crit, err, warning, notice, info, debug.
      2. **Version**
-   3. **Timestamp**
+      3. **Timestamp**
      4. **Hostname**
      5. **Process name**
      6. **Process id**
@@ -199,3 +199,65 @@
 
 ### RMON
 
+**Remote Monitoring** (RFC 2819, 2021) est une extension du protocole SNMP. Utilise ses propres MIBs. Une sonde RMON (*tap*) collecte des informations de type statistique.
+
+### CIM
+
+* Le modèle CIM (**Common Information Model**) permet la représentation d'objets informatiques (tout comme SNMP). Utilisé principalement par Microsoft.
+* Un objet peut être du matériel, du logiciel, etc. Un objet à une **classe** qui définit ses **propriétés**. Il est manipulé par des **méthodes** et est référencé/adressé par son **namespace**.
+* Fait appel à :
+  * des agents composés de *providers* (objet en surveillant d'autres) et de *managed objects* (disques dur, cartes réseau, etc.),
+  * des gestionnaires (*consumers*).
+* Basé sur 3 niveaux de schémas conceptuels :
+  * **Core schema** : implémenté par tous les agents,
+  * **Common schema** : implémenté par les agents d'un même type (e.g db, app),
+  * **Extension schema** : propre à un fabricant.
+* Les schémas sont décrit avec le format **MOF** (Managed Object File) de type UML.
+* Relations entre CIM et SNMP possibles.
+
+### WMI
+
+* **Windows Management Instrumentation** (WMI) est l'implémentation Microsoft du modèle CMI. Schéma CIM étendu par le schéma Win32. Namespace `CIMv2/ms_409` pour l'anglais et `CIMv2/ms_40c` pour le français. Données manipulées par un langage de type SQL : WQL.
+
+* `net start winmgmt` permet de démarrer le service WMI.
+* `winmgmt.exe` permet de gérer le service en mode graphique, `wmic.exe` en mode console. PowerShell : `Get-WmiObject` et `Get-CimInstance`.
+* `wbemtest` permet de tester l'infrastructure WMI. WBEM (Web-Based Enterprise Management) utilise le protocole HTTP.
+
+### Cisco Netflow
+
+Permet d'exporter depuis un router des informations statistiques sur les flux IP traités par une interface (IP source, dest ; port source, dest ; interface). Utilise UDP. Exploite le contenu des caches « route switching » des routeurs Cisco. Standard IPFIX. Collecteur de flux et outils d'analyse requis.
+
+```
+# activer l'export sur une interface d'un router
+interface fa0/0
+ip flow {ingress | egress}
+
+# voir le contenu du cache Netflow sur un router
+Router# show ip cache flow
+
+# vérifier les données exportées
+Router# show ip flow export
+```
+
+### NETCONF
+
+* Mécanise (RFC 6241) destiné à l'industrialisation des configurations d'équipements. Vise à remplacer SNMP pour la configuration des équipements. Basé sur YANG ou JSON. Différents protocoles possibles : RPC, SSH, SOAP, BEEP, etc. Mode client–serveur. Permet de roll-back une config grâce au datastore. Port 820 chez Cisco.
+* Implémente des **opérations** permettant de transmettre un **contenu** (format XML, modèle YANG) transporté via des **messages** RPC (protégé par SSH) : get, get-config, edit-config, lock, unlock, kill-session, etc.
+* **YANG** est le langage de modélisation de NETCONF, il remplace le modèle SMI utilisé par SNMP pour les MIB en tant que DDL (Data Definition Language). Données de configuration et données d'état. Données typées. Définit des modules.
+* Peut émettre des messages en cas d'événement. Il faut faire une souscription auprès du client NETCONF.
+* RESTCONF implémente YANG mais avec REST. HTTP plutôt que RCP. Moins supporté.
+* Commandes IOS :
+  ```
+  # prérequis : configuration d'un utilisateur privilège 15
+  Router(config)# netconf-yang
+  Router(config)# netconf-yang feature candidate-datastore
+  ```
+
+<img src="img/snmp-netconf.png" style="zoom:35%;" />
+
+### Nagios
+
+* Plateforme open-source fournissant les principales technologies de gestion, e.g. SNMP, syslog, WMI. Programme modulaire composé de 3 couches : Nagios Core (open-source), Nagios XI (UI, payant), plugins (nombreux).
+
+* Possibilité d'ajouter un agent spécifique sur la cible pour une meilleure gestion.
+* Monitoring passif (SNMP traps, ...) ou actif (SNMP Get, ...).
