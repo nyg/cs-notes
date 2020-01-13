@@ -37,13 +37,13 @@
     ```sh
     stat, mdls (macOS) # Métadonnées de fichiers
     mount, umount      # Montage de systèmes de fichiers
-mkfs               # Création d'un système de fichiers
+    mkfs               # Création d'un système de fichiers
     df                 # Informations sur un système de fichiers
     fsck               # Vérification d'un système de fichiers
 
     # Création d'une table de partition
     fdisk, sfdisk (scriptable)
-parted, gparted (gui)
+    parted, gparted (gui)
     ```
 
 * Niveaux de sauvegarde :
