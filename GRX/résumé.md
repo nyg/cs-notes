@@ -69,7 +69,7 @@
 
 * Fonctionnalités des **Network Management System** (NMS) :
   * aggrégation d'alarmes,
-  * définition automatique de seuilss d'alarmes,
+  * définition automatique de seuils d'alarmes,
   * auto-decouverte des équipements des réseaux,
   * interrogation des équipements,
   * cartographie des réseaux,
@@ -217,7 +217,7 @@
 
 ### WMI
 
-* **Windows Management Instrumentation** (WMI) est l'implémentation Microsoft du modèle CMI. Schéma CIM étendu par le schéma Win32. Namespace `CIMv2/ms_409` pour l'anglais et `CIMv2/ms_40c` pour le français. Données manipulées par un langage de type SQL : WQL.
+* **Windows Management Instrumentation** (WMI) est l'implémentation Microsoft du modèle CIM. Schéma CIM étendu par le schéma Win32. Namespace `CIMv2/ms_409` pour l'anglais et `CIMv2/ms_40c` pour le français. Données manipulées par un langage de type SQL : WQL.
 
 * `net start winmgmt` permet de démarrer le service WMI.
 * `winmgmt.exe` permet de gérer le service en mode graphique, `wmic.exe` en mode console. PowerShell : `Get-WmiObject` et `Get-CimInstance`.
@@ -259,5 +259,5 @@ Router# show ip flow export
 
 * Plateforme open-source fournissant les principales technologies de gestion, e.g. SNMP, syslog, WMI. Programme modulaire composé de 3 couches : Nagios Core (open-source), Nagios XI (UI, payant), plugins (nombreux).
 
-* Possibilité d'ajouter un agent spécifique sur la cible pour une meilleure gestion.
+* Possibilité d'ajouter un agent spécifique sur la cible pour une meilleure gestion (NCPA).
 * Monitoring passif (SNMP traps, ...) ou actif (SNMP Get, ...).
