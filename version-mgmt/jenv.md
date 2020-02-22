@@ -3,7 +3,7 @@
 jEnv is a version manager for Java. It has, however, some limitations:
 
 1. It does not provide the ability to install Java versions, this must be done using `brew`.
-2. It will not update the JAVA_HOME. The export plugin must be enabled, but even then the JAVA_HOME will only be updated when the shell (re)starts.
+2. It will not update the `JAVA_HOME`. The `export` plugin must be enabled, but even then the `JAVA_HOME` will only be updated when the shell (re)starts.
 
 Maybe I should be using [SDKMAN!](https://github.com/sdkman/sdkman-cli)…
 
@@ -38,7 +38,7 @@ jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 
 jenv rehash
 
-# check with
+# verify
 jenv versions
 ```
 
