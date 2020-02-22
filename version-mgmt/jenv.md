@@ -66,4 +66,7 @@ jenv commands
 
 # help for a specific command
 jenv help <command>
+
+# to get a list of installed JVM
+/usr/libexec/java_home -V
 ```
