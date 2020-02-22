@@ -15,6 +15,10 @@ brew install jenv
 
 # enable the export plugin
 jenv enable-plugin export
+
+# add these two lines in .zshrc
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 ```
 
 ## Install Java versions
