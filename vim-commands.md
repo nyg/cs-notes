@@ -14,8 +14,9 @@
 * `y`: copy something
 
 ### Move around
-* `b`, `w`, `e`
-* `0`, `$`
+* `b`, `w`, `e`, previous word (begining), next word, next word (end)
+* `0`, `$`, begining and end of line
+* `gg`, `G`, begining and end of file
 
 ### Misc
 
